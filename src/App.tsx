@@ -1,26 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {Routes, Route} from "react-router-dom";
+import Home from "./Components/Home/Home";
+import {Toaster} from "react-hot-toast";
+import Modal from "react-modal";
+import Panier from "./Components/Panier/Panier";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+    Modal.setAppElement("#root");
+
+    return (
+        <>
+            <Toaster reverseOrder={false}/>
+            <Routes>
+                <Route path="*" element={<Home/>}/>
+                <Route path={'/panier'} element={<Panier/>}/>
+            </Routes>
+        </>
+    );
 }
 
 export default App;
